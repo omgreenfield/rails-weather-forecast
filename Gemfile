@@ -47,6 +47,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # Guard allowing us to run tests on edit
+  gem "guard-rspec", "~> 4.7"
 end
 
 group :development do
@@ -60,4 +63,3 @@ group :test do
   gem "faker", "~> 3.5"
   gem "shoulda-matchers", "~> 6.4"
 end
-

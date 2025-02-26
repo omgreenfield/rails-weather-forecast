@@ -1,0 +1,9 @@
+<div class="forecasts-index">
+  <%= form_with url: forecasts_path, method: :get do |form| %>
+    <div class="input-group">
+      <%= form.label :address, "Enter an address, city, or zip code:", class: "form-label" %>
+      <%= form.text_field :address, placeholder: "e.g. '123 Main St, Santa Barbara, CA' or '93101'", required: true %>
+    </div>
+    <%= form.submit "Get Forecast" %>
+  <% end %>
+</div>
