@@ -16,5 +16,9 @@ class ForecastsController < ApplicationController
 
     @location = GeocodingService.geocode(@address)
     @forecast = WeatherForecastService.forecast(@location)
+  rescue => e
+    flash[:error] = e.message
+
+    redirect_to root_path
   end
 end

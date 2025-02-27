@@ -27,8 +27,8 @@ class WeatherForecastService
 
   private
 
-  attr_reader :api_key
-
+  # See {OpenWeatherAdapter#query}
+  #
   # @param location [Location]
   # @return [Forecast]
   def query(location)
