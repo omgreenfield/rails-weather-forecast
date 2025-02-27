@@ -12,7 +12,7 @@ _By Matthew Greenfield_
 rails new weather-forecast -T -d postgresql
 
 # Add test gems
-bundle add -g test rspec-rails factory_bot_rails faker shoulda-matchers guard-rspec
+bundle add -g test rspec-rails factory_bot_rails faker shoulda-matchers guard-rspec webmock
 
 # Add spec helpers, Guardfile
 rails generate rspec:install

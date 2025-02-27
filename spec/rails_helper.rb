@@ -8,6 +8,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 # that will avoid rails generators crashing because migrations haven't been run yet
 # return unless Rails.env.test?
 require 'rspec/rails'
+require 'webmock/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -38,6 +39,9 @@ RSpec.configure do |config|
     Rails.root.join('spec/fixtures')
   ]
 
+  # Include FactoryBot methods
+  config.include FactoryBot::Syntax::Methods
+
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -67,4 +71,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end
