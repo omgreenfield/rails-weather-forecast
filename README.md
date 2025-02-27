@@ -2,6 +2,8 @@
 
 A Ruby on Rails application that provides weather forecasts based on user-provided addresses. The application integrates with OpenWeather API for weather data and uses geocoding to convert addresses into coordinates.
 
+![image](https://github.com/user-attachments/assets/a157e8d8-8842-403f-9f76-a32df76846e0)
+
 ## Technologies
 
 - Ruby on Rails
