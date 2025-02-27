@@ -1,0 +1,16 @@
+<div class="card mb-4">
+  <div class="card-header bg-primary text-white">
+    <h2 class="mb-0 fs-5">Location Information</h2>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-6 fw-bold">
+        <%= location.address %>
+      </div>
+      <div class="col-6">
+        <%= card("Latitude", location.latitude) %>
+        <%= card("Longitude", location.longitude) %>
+      </div>
+    </div>
+  </div>
+</div>

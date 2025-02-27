@@ -1,3 +1,4 @@
+# PORO for forecast data from OpenWeather API.
 class Forecast
   attr_reader :latitude, :longitude, :time, :temperature, :feels_like, :humidity, :temperature_low, :temperature_high, :wind_speed, :weather_description
 

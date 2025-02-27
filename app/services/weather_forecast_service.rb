@@ -3,7 +3,10 @@
 class WeatherForecastService
   CACHE_EXPIRATION = 30.minutes
 
-  # Syntactic sugar
+  # Syntactic sugar for `new.forecast(location)`
+  #
+  # @param location [Location]
+  # @return [Forecast]
   def self.forecast(location)
     new.forecast(location)
   end

@@ -1,7 +1,20 @@
 # frozen_string_literal: true
 
+# Service for geocoding addresses.
 class GeocodingService
   class << self
+    # Translate address or location information into a Location object.
+    #
+    # @param address [String]
+    # @return [Location]
+    # @raise [NoAddressProvidedError] if no address is provided
+    # @raise [BadAddressError] if the address is not a string
+    #
+    # @example - full address
+    #   GeocodingService.geocode('102 N. Hope Avenue, Santa Barbara, California')
+    #
+    # @example - just zip code
+    #   GeocodingService.geocode('93101')
     def geocode(address)
       raise NoAddressProvidedError if address.nil?
       raise BadAddressError, address unless address.is_a?(String)
@@ -12,6 +25,10 @@ class GeocodingService
       end
     end
 
+    # Translate results from geocoder API into a Location object.
+    #
+    # @param data [Geocoder::Result]
+    # @return [Location]
     def location_from_result(data)
       Location.new(
         address: data.address,
@@ -21,12 +38,18 @@ class GeocodingService
       )
     end
 
+    # Makes request to geocoder API and returns results. Defaults to US.
+    #
+    # @param address [String]
+    # @return [Geocoder::Result]
+    #
+    # @raise [CouldNotGeocodeError] if the address could not be geocoded
     def result_from_address(address)
       results = Geocoder.search(address, params: { countrycodes: 'US' })
 
       raise CouldNotGeocodeError, address if results.empty?
 
-      # Haven't yet determined significant of multiple responses from Geocoder.
+      # For now, just return the first result.
       results.first
     end
   end

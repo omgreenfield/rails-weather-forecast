@@ -1,10 +1,18 @@
 # frozen_string_literal: true
 
+# Adapter for the OpenWeather API.
+#
+# Converts responses from the OpenWeather API into Forecast POROs.
+#
+# @see https://openweathermap.org/api.
 class OpenWeatherAdapter
   include HTTParty
   BASE_URI = 'https://api.openweathermap.org/data/2.5'
   base_uri BASE_URI
 
+  # Initializes the OpenWeatherAdapter with the API key.
+  #
+  # @raise [NoApiKeyError] if the API key is not set.
   def initialize
     @api_key = ENV.fetch('OPENWEATHER_API_KEY', nil)
     raise NoApiKeyError unless @api_key

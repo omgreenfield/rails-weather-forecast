@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '~> 8.0.1'
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem 'propshaft'
-# Use postgresql as the database for Active Record
-gem 'pg', '~> 1.1'
+# Use SQLite just to have a DB. We don't use it anyway
+gem 'sqlite3', '~> 2.6'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
@@ -18,9 +18,6 @@ gem 'stimulus-rails'
 gem 'jbuilder'
 
 gem 'bootsnap', require: false
-
-# Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
-gem 'kamal', require: false
 
 # Caching
 gem 'redis', '~> 5.4'
@@ -40,6 +37,9 @@ group :development, :test do
   # Local env vars
   gem 'dotenv-rails', '~> 3.1'
 
+  # Guard allowing us to run tests on edit
+  gem 'guard-rspec', '~> 4.7'
+
   # Debuggerizing
   gem 'pry-rails', '~> 0.3.11'
   gem 'pry-byebug', '~> 3.10'
@@ -47,9 +47,6 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'rubocop-rails-omakase', require: false
-
-  # Guard allowing us to run tests on edit
-  gem 'guard-rspec', '~> 4.7'
 end
 
 group :development do
@@ -58,9 +55,9 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 7.1'
   gem 'factory_bot_rails', '~> 6.4'
   gem 'faker', '~> 3.5'
+  gem 'rspec-rails', '~> 7.1'
   gem 'shoulda-matchers', '~> 6.4'
   gem 'webmock', '~> 3.25'
 end

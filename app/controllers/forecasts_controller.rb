@@ -7,18 +7,17 @@ class ForecastsController < ApplicationController
   def show
     @address = params.require(:address)
 
-    unless @address.present?
-      flash[:error] = 'Please enter an address'
-
-      redirect_to root_path
-      return
-    end
+    raise WeatherForecastError, 'Please enter an address' unless @address.present?
 
     @location = GeocodingService.geocode(@address)
     @forecast = WeatherForecastService.forecast(@location)
-  rescue => e
+  rescue WeatherForecastError => e
     flash[:error] = e.message
 
-    redirect_to root_path
+    render :error, status: :unprocessable_entity
+  rescue StandardError => e
+    flash[:error] = e.message
+
+    render :error, status: :internal_server_error
   end
 end

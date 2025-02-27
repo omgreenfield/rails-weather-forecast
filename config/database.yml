@@ -13,9 +13,10 @@
 # gem "pg"
 #
 default: &default
-  adapter: postgresql
+  adapter: sqlite3
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 test_and_development: &test_and_development
   <<: *default
@@ -26,11 +27,13 @@ test_and_development: &test_and_development
 
 development:
   <<: *test_and_development
-  database: 'weather_forecast_development'
+  # database: 'weather_forecast_development'
+  database: db/development.sqlite3
 
 test:
   <<: *test_and_development
-  database: weather_forecast_test
+  # database: weather_forecast_test
+  database: db/test.sqlite3
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -55,6 +58,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: weather_forecast_production
+    # database: weather_forecast_production
+    database: db/production.sqlite3
     username: weather_forecast
     password: <%= ENV["WEATHER_FORECAST_DATABASE_PASSWORD"] %>
