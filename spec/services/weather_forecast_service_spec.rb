@@ -37,7 +37,7 @@ RSpec.describe WeatherForecastService do
 
     it 'returns cached results if available' do
       expect(adapter).to receive(:query).once
-      
+
       2.times { service.forecast(location) }
     end
 

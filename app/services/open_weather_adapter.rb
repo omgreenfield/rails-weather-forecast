@@ -48,7 +48,7 @@ class OpenWeatherAdapter
       lat: latitude,
       lon: longitude,
       appid: api_key,
-      units: 'imperial',
+      units: 'imperial'
     })
 
     raise OpenWeatherApiError, response unless response.success?
@@ -110,7 +110,7 @@ class OpenWeatherAdapter
       super("OpenWeather API error: #{response}")
     end
   end
-  
+
   class NoApiKeyError < WeatherForecastError
     def initialize
       super('OpenWeather API key is missing. Please set OPENWEATHER_API_KEY environment variable. Visit https://openweathermap.org/api to get an API key.')

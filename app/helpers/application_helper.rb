@@ -10,4 +10,3 @@ module ApplicationHelper
     ).html_safe
   end
 end
-

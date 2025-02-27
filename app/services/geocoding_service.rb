@@ -22,7 +22,7 @@ class GeocodingService
     end
 
     def result_from_address(address)
-      results = Geocoder.search(address, params: { countrycodes: "US" })
+      results = Geocoder.search(address, params: { countrycodes: 'US' })
 
       raise CouldNotGeocodeError, address if results.empty?
 
@@ -39,7 +39,7 @@ class GeocodingService
 
   class NoAddressProvidedError < WeatherForecastError
     def initialize
-      super("No address was provided")
+      super('No address was provided')
     end
   end
 
@@ -49,4 +49,3 @@ class GeocodingService
     end
   end
 end
-

@@ -19,7 +19,7 @@ RSpec.describe GeocodingService do
       before do
         allow(Geocoder).to receive(:search)
           .with(address)
-          .and_return([mock_location])
+          .and_return([ mock_location ])
       end
 
       it 'returns a Location object with correct attributes' do

@@ -10,12 +10,12 @@ RSpec.describe OpenWeatherAdapter do
   let(:stub_query_params) { { lat: latitude, lon: longitude, units: 'imperial', appid: api_key } }
   let(:start_time) { Time.new(2025, 2, 26, 12) }
   let(:end_time) { 3.hours.after(start_time) }
-  
+
   let(:weather_response) do
     {
       'coord' => { 'lat' => latitude, 'lon' => longitude },
       'dt' => start_time.to_i,
-      'weather' => [{ 'description' => 'clear sky' }],
+      'weather' => [ { 'description' => 'clear sky' } ],
       'main' => {
         'temp' => 79.54,
         'feels_like' => 75.54,
@@ -63,7 +63,6 @@ RSpec.describe OpenWeatherAdapter do
     let(:adapter) { described_class.new }
 
     before do
-
       stub_request(:get, "#{base_uri}/weather")
         .with(query: stub_query_params)
         .to_return(status: 200, body: weather_response.to_json)
@@ -71,7 +70,7 @@ RSpec.describe OpenWeatherAdapter do
 
     it 'returns a Forecast object' do
       result = adapter.weather(latitude, longitude)
-      
+
       expect(result).to be_a(Forecast)
       expect(result.latitude).to eq(latitude)
       expect(result.longitude).to eq(longitude)
@@ -109,11 +108,11 @@ RSpec.describe OpenWeatherAdapter do
 
     it 'returns an array of Forecast objects' do
       results = adapter.forecast(latitude, longitude)
-      
+
       expect(results).to be_an(Array)
       expect(results.length).to eq(2)
       expect(results).to all(be_a(Forecast))
-      
+
       expect(results.map(&:time)).to eq([
         start_time,
         end_time
@@ -160,7 +159,7 @@ RSpec.describe OpenWeatherAdapter do
 
     it 'handles missing data gracefully' do
       result = adapter.send(:forecast_from_response_data, {})
-      
+
       expect(result).to be_a(Forecast)
       expect(result.latitude).to be_nil
       expect(result.longitude).to be_nil

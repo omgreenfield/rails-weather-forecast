@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'up' => 'rails/health#show', as: :rails_health_check
 
   resources :forecasts, only: :index do
     collection do
@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root "forecasts#index"
+  root 'forecasts#index'
 end

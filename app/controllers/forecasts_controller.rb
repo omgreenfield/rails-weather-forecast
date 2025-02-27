@@ -8,7 +8,7 @@ class ForecastsController < ApplicationController
     @address = params.require(:address)
 
     unless @address.present?
-      flash[:error] = "Please enter an address"
+      flash[:error] = 'Please enter an address'
 
       redirect_to root_path
       return

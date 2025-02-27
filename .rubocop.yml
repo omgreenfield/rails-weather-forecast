@@ -1,8 +1,11 @@
-# Omakase Ruby styling for Rails
 inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+# Uses [1, 2, 3] rather than [ 1, 2, 3 ]
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
+# In my personal projects, I like `'` around strings unless needed.
+# It tells the reader that no string interpolation or escaped characters are present.
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+  ConsistentQuotesInMultiline: true
