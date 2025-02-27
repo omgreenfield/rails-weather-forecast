@@ -1,0 +1,17 @@
+<div class="row justify-content-center">
+  <div class="col-10">
+    <div class="card">
+      <div class="card-body p-4">
+        <%= form_with url: forecasts_path, method: :get, class: "needs-validation" do |form| %>
+          <div class="mb-3">
+            <%= form.label :address, "Enter an address, city, or zip code", class: "form-label fw-bold" %>
+            <%= form.text_field :address, placeholder: "123 Memory Lane, Santa Barbara, CA 93101", required: true, class: "form-control form-control-lg" %>
+          </div>
+          <div class="d-grid">
+            <%= form.submit "Get Forecast", class: "btn btn-primary btn-lg" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
