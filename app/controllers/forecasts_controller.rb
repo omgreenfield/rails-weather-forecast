@@ -7,13 +7,14 @@ class ForecastsController < ApplicationController
   def show
     @address = params.require(:address)
 
-    if @address.present?
-      # Geocode address
-      
-      flash[:info] = "Using this address: #{@address}"
-    else
+    unless @address.present?
       flash[:error] = "Please enter an address"
       redirect_to root_path
+
+      return
     end
+
+    @location = GeocodingService.geocode(@address)
+    @forecast = WeatherForecastService.forecast(@location)
   end
 end

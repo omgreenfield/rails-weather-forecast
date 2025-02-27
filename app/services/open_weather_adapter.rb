@@ -99,19 +99,19 @@ class OpenWeatherAdapter
 
   public
 
-  class ParseError < StandardError
+  class ParseError < WeatherForecastError
     def initialize(response)
       super("Unable to parse response from OpenWeather: #{response}")
     end
   end
 
-  class OpenWeatherApiError < StandardError
+  class OpenWeatherApiError < WeatherForecastError
     def initialize(response)
       super("OpenWeather API error: #{response}")
     end
   end
   
-  class NoApiKeyError < StandardError
+  class NoApiKeyError < WeatherForecastError
     def initialize
       super('OpenWeather API key is missing. Please set OPENWEATHER_API_KEY environment variable. Visit https://openweathermap.org/api to get an API key.')
     end

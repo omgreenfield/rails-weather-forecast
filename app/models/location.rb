@@ -9,6 +9,6 @@ class Location
   end
 
   def cache_key
-    "weather_forecast:#{zip_code}"
+    "weather_forecast:zip_code:#{zip_code}"
   end
 end
