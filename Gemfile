@@ -45,7 +45,7 @@ group :development, :test do
 
   # Debuggerizing
   gem 'pry-rails', '~> 0.3.11'
-  gem 'pry-byebug', '~> 3.10'
+  gem 'pry-byebug', '~> 3.11'
   gem 'pry-stack_explorer', '~> 0.6.1'
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
