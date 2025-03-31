@@ -26,7 +26,7 @@ gem 'kamal', require: false
 gem 'redis', '~> 5.4'
 
 # HTTP requests
-gem 'httparty', '~> 0.22.0'
+gem 'httparty', '~> 0.23.1'
 
 # Geocoding (address)
 gem 'geocoder', '~> 1.8'
